@@ -7,7 +7,9 @@
 ///              the path to their picture.
 
 class Recipe {
+  // label for the recipe
   String label;
+  // path to image asset
   String imageUrl;
   Recipe(this.label, this.imageUrl);
 
