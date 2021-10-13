@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipes/recipie_details.dart';
 import 'recipe.dart';
 
 ///CLASSNAME: RECIPECARD
@@ -14,6 +15,16 @@ class RecipeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) {
+            return RecipeDetails(
+              recipe: Recipe.samples[index],
+            );
+          }),
+        );
+      },
       child: Container(
         alignment: Alignment.center,
         margin: const EdgeInsets.only(top: 10.0),
