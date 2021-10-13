@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipes/recipie_details.dart';
+import 'package:recipes/recipe_details.dart';
 import 'recipe.dart';
 
 ///CLASSNAME: RECIPECARD
