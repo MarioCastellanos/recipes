@@ -1,7 +1,12 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'recipe.dart';
+
+///CLASSNAME: RecipeDetails
+///PARAMETERS: Recipe recipe: The recipe to be displayed
+///Description: Displays the recipe selected by the user and the ingredients
+///             required. As well as allows the user to modify the serving size
+///             while the ingredients dynamically adjust.
 
 class RecipeDetails extends StatefulWidget {
   static String id = 'RecipeDetailsPage';
@@ -14,6 +19,7 @@ class RecipeDetails extends StatefulWidget {
 }
 
 class _RecipeDetailsState extends State<RecipeDetails> {
+  // the initial slider value
   int _sliderVal = 1;
 
   @override
@@ -21,7 +27,11 @@ class _RecipeDetailsState extends State<RecipeDetails> {
     return Scaffold(
       backgroundColor: Colors.amber,
       appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
         title: Text(
+          // App bar that displays the recipe name
           widget.recipe.label,
           style: const TextStyle(
             color: Colors.black,
@@ -36,15 +46,17 @@ class _RecipeDetailsState extends State<RecipeDetails> {
               width: double.infinity,
               child: Image.asset(widget.recipe.imageUrl),
             ),
+            // Displaying current serving size
             Center(
               child: Text(
-                widget.recipe.label,
+                'Makes ${(widget.recipe.servings * _sliderVal).toString()} servings',
                 style: const TextStyle(
                   fontSize: 30,
                 ),
                 textAlign: TextAlign.center,
               ),
             ),
+            // Builds the recipe list.
             Expanded(
               child: ListView.builder(
                 itemCount: widget.recipe.ingredients.length,
@@ -75,6 +87,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                 },
               ),
             ),
+            // Slider to adjust recipe serving size.
             Slider(
               min: 1,
               max: 10,
